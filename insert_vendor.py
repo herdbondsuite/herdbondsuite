@@ -10,7 +10,8 @@ TABLE_NAME = "vendors"
 headers = {
     "apikey": SUPABASE_API_KEY,
     "Authorization": f"Bearer {SUPABASE_API_KEY}",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Prefer": "return=representation"  # This ensures we get a response
 }
 
 vendor = {
@@ -35,3 +36,4 @@ response = requests.post(
 
 print("Status:", response.status_code)
 print("Response:", response.json())
+

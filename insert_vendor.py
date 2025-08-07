@@ -11,7 +11,7 @@ headers = {
     "apikey": SUPABASE_API_KEY,
     "Authorization": f"Bearer {SUPABASE_API_KEY}",
     "Content-Type": "application/json",
-    "Prefer": "return=representation"  # This ensures we get a response
+    "Prefer": "return=representation"
 }
 
 vendor = {
@@ -20,7 +20,6 @@ vendor = {
     "location": "Vero Beach, FL",
     "website": "https://bohobrideco.com",
     "price_range": "$$",
-    "style_tags": ["boho", "natural", "earthy"],
     "description": "Boho-style wedding photography and coordination for free-spirited couples.",
     "ai_summary": "Chill, affordable boho-style wedding vendor",
     "source": "manual-entry",
@@ -36,4 +35,5 @@ response = requests.post(
 
 print("Status:", response.status_code)
 print("Response:", response.json())
+
 

@@ -1,13 +1,14 @@
-name: Upload Vendors to Supabase
+name: Upload Real Wedding Vendors to Supabase
 
 on:
   schedule:
-    - cron: "0 14 * * *"  # Runs every day at 10AM ET
-  workflow_dispatch:      # Allows manual trigger
+    - cron: "0 14 * * *"  # Runs daily at 10AM ET (14:00 UTC)
+  workflow_dispatch:      # Allows manual run from GitHub UI
 
 jobs:
   upload:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -18,10 +19,11 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests beautifulsoup4
 
-      - name: Run insert_vendor.py
+      - name: Run WeddingWire scraper
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_API_KEY: ${{ secrets.SUPABASE_API_KEY }}
-run: python scrape_and_insert.py
+        run: python scrape_and_insert.py
+
